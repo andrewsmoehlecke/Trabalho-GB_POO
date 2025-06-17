@@ -7,6 +7,8 @@ import java.util.List;
 import static com.poo.util.Constantes.ARQUIVO_COMPUTACAO;
 
 public class ReadingProcess extends Processo implements Serializable {
+    private static final long serialVersionUID = 1L;
+
     private ContextoExecucao contexto;
 
     public ReadingProcess(int pid, ContextoExecucao contexto) {
@@ -19,8 +21,10 @@ public class ReadingProcess extends Processo implements Serializable {
         try (BufferedReader reader = new BufferedReader(new FileReader(ARQUIVO_COMPUTACAO))) {
             String linha;
             while ((linha = reader.readLine()) != null) {
-                if (contexto.total < contexto.fila.length) {
-                    contexto.fila[contexto.total++] = new ComputingProcess(contexto.pidCounter++, linha);
+                if (contexto.getTotal() < contexto.getFila().length) {
+                    contexto.getFila()[contexto.getTotal()] = new ComputingProcess(contexto.getPidCounter(), linha);
+                    contexto.incrementarTotal();
+                    contexto.incrementarPidCounter();
                 }
             }
             new PrintWriter(ARQUIVO_COMPUTACAO).close();

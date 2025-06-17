@@ -5,6 +5,8 @@ import java.io.Serializable;
 import static com.poo.util.Constantes.*;
 
 public class Expressao implements Serializable  {
+    private static final long serialVersionUID = 1L;
+
     private double operando1;
     private double operando2;
     private String operador;

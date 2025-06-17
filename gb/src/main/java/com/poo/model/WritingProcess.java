@@ -7,6 +7,8 @@ import java.io.Serializable;
 import static com.poo.util.Constantes.ARQUIVO_COMPUTACAO;
 
 public class WritingProcess extends Processo implements Serializable  {
+    private static final long serialVersionUID = 1L;
+
     private Expressao expressao;
 
     public WritingProcess(int pid, String exp) {

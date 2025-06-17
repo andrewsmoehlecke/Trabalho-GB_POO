@@ -166,7 +166,7 @@ public class Sistema {
         }
         for (int i = 0; i < total; i++) {
             Processo p = fila[i];
-            System.out.println("PID: " + p.getPid() + " - Tipo: " + p.getClass().getSimpleName());
+            if (p != null) System.out.println("PID: " + p.getPid() + " - Tipo: " + p.getClass().getSimpleName());
         }
     }
 
@@ -184,7 +184,7 @@ public class Sistema {
     }
 
     public static void atualizarContextoExecucao(ContextoExecucao contexto) {
-        total = contexto.total;
-        pidCounter = contexto.pidCounter;
+        total = contexto.getTotal();
+        pidCounter = contexto.getPidCounter();
     }
 }
