@@ -19,13 +19,14 @@ public class ReadingProcess extends Processo implements Serializable {
         try (BufferedReader reader = new BufferedReader(new FileReader(ARQUIVO_COMPUTACAO))) {
             String linha;
             while ((linha = reader.readLine()) != null) {
-                if (contexto.total >= contexto.fila.length) break;
-                contexto.fila[contexto.total++] = new ComputingProcess(contexto.pidCounter++, linha);
+                if (contexto.total < contexto.fila.length) {
+                    contexto.fila[contexto.total++] = new ComputingProcess(contexto.pidCounter++, linha);
+                }
             }
-            new PrintWriter(ARQUIVO_COMPUTACAO).close(); // limpa o arquivo
+            new PrintWriter(ARQUIVO_COMPUTACAO).close();
             System.out.println("Expressões carregadas e computações criadas.");
         } catch (IOException e) {
-            System.out.println("Erro ao ler o arquivo.");
+            System.out.println("Erro ao ler o arquivo de computações: " + e.getMessage());
         }
     }
 

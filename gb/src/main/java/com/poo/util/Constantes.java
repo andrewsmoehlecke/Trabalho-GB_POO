@@ -7,6 +7,5 @@ public class Constantes {
     public static final String OPERADOR_SUBTRACAO = "-";
     public static final String OPERADOR_MULTIPLICACAO = "*";
     public static final String OPERADOR_DIVISAO = "/";
-    public static final int PID_INICIAL = 1;
     public static final int MAX_PROCESSOS = 100;
 }
