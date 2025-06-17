@@ -1,7 +1,6 @@
 package com.poo;
 
 import com.poo.model.*;
-import com.poo.util.Constantes;
 
 import java.io.*;
 import java.util.*;
@@ -84,7 +83,7 @@ public class Sistema {
             return;
         }
         Processo processo = fila[0];
-        processo.executar();
+        if (processo != null) processo.executar();
 
         if (processo instanceof ReadingProcess rp) {
             atualizarContextoExecucao(rp.getContexto());
@@ -184,7 +183,8 @@ public class Sistema {
     }
 
     public static void atualizarContextoExecucao(ContextoExecucao contexto) {
-        total = contexto.getTotal();
+        System.arraycopy(contexto.getFila(), 1, fila, 0, contexto.getTotal());
         pidCounter = contexto.getPidCounter();
+        total = contexto.getTotal();
     }
 }
